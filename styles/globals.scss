@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Karla&family=Rubik:wght@300;400;500&display=swap");
+
+$tan: #ded8d2;
+$rubik: "Rubik", sans-serif;
+$jetbrains: "JetBrains Mono", monospace;
+$karla: "Karla", sans-serif;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: $tan;
+}

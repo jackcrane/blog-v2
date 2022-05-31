@@ -1,23 +1,6 @@
 import styles from "../styles/article.module.scss";
 
 const Article = (props) => {
-  const articles = [
-    {
-      title: "Og-Image",
-      subtitle: "Technical Discussion",
-      snippet:
-        "Read about the tech and ideas behind my ultra-successful open graph image service",
-      link: "/posts/og-image",
-    },
-    {
-      title: "DigitalOcean app",
-      subtitle: "Technical Discussion",
-      snippet:
-        "Learn about the wild ride behind the app that (might) get me an internship at DigitalOcean",
-      link: "/posts/digitalocean-app",
-    },
-  ];
-
   return (
     <>
       <nav className={styles.nav}>
@@ -36,26 +19,44 @@ const Article = (props) => {
       <main className={styles.main}>
         <div className={styles.title}>
           <span>
-            <h1>Technical Blog</h1>
-            <h2>home</h2>
+            <h1>{props.title}</h1>
+            <h2>{props.subtitle}</h2>
           </span>
         </div>
         <div className={styles.contentShadow}></div>
         <div className={styles.pattern1}></div>
         <div className={styles.pattern2}></div>
         <article className={styles.content}>
-          <div className={styles.articles}>
-            {articles.map((article, i) => (
-              <div className={styles.article} key={i}>
-                <div className={styles.article_title}>
-                  <h1>{article.title}</h1>
-                  <h2>{article.subtitle}</h2>
+          <div className={styles.quick}>
+            <img
+              src={props.image}
+              alt="Preview image"
+              className={styles.image}
+            />
+            <div className={styles.quick_text}>
+              {props.links.map((link, i) => (
+                <div key={i} className={styles.res}>
+                  <span className={styles.label}>{link.label}</span>
+                  <a className={styles.link} href={link.url}>
+                    {link.text ? link.text : link.url}
+                  </a>
                 </div>
-                <p>{article.snippet}</p>
-                <a href={article.link}>Continue reading</a>
+              ))}
+              <div className={styles.res}>
+                <span className={styles.label}>Tech Stack</span>
+                <div className={styles.stack}>
+                  {props.stack.map((tech, i) => (
+                    <img
+                      key={i}
+                      className={styles.tech}
+                      src={`https://unpkg.com/simple-icons@v7/icons/${tech}.svg`}
+                    />
+                  ))}
+                </div>
               </div>
-            ))}
+            </div>
           </div>
+          <div className={styles.article}>{props.children}</div>
         </article>
         <div className={styles.socials}>
           <span className={styles.social}>
